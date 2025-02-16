@@ -1,9 +1,9 @@
-> [!NOTE]  
-> The local-exec provisioner commands are intended to run on Windows.
-
 ## Overview
 
 This repository is a submodule for the **RaspberryOnCloud** project.
+
+> [!NOTE]  
+> The `local-exec` provisioner commands are intended to run on Windows.
 
 ## Commands
 
