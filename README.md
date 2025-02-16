@@ -2,10 +2,10 @@
 
 This repository is a submodule for the **RaspberryOnCloud** project.
 
+## Commands
+
 > [!NOTE]  
 > The `local-exec` provisioner commands are intended to run on Windows.
-
-## Commands
 
 ### SSH
 
