@@ -33,7 +33,7 @@ resource "null_resource" "agent" {
     when = destroy
     inline = [
       "sudo k3s-killall.sh",
-      "sudo k3s-uninstall.sh",
+      "sudo k3s-agent-uninstall.sh",
     ]
   }
 }
