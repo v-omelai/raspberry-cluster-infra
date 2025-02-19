@@ -12,6 +12,11 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - `ssh-keygen -t rsa -f .ssh/52pi-k3s-1`
 - `ssh -i .ssh/52pi-k3s-1 52pi-k3s-1@52pi-k3s-1`
 
+### Server
+
+- `type .server\address`
+- `type .server\node-token`
+
 ### Terraform
 
 - `terraform fmt -recursive`

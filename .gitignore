@@ -36,6 +36,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# local-exec
+# local-exec & remote-exec
 .ssh
-.temp
+.server

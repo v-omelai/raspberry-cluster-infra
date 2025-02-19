@@ -1,26 +1,35 @@
-variable "instances" {
-  description = "The number of instances"
-  type        = number
+variable "nodes" {
+  type = list(object({
+    user = string
+    host = string
+    key  = string
+  }))
 }
 
 variable "sleep" {
-  description = "The number of seconds to pause during execution"
-  type        = number
+  type = number
 }
 
 resource "null_resource" "initialize" {
-  count = var.instances
+  for_each = { for idx, node in var.nodes : idx => node }
+
+  triggers = {
+    user = each.value.user
+    host = each.value.host
+    key  = each.value.key
+    run  = timestamp()
+  }
 
   connection {
     type        = "ssh"
-    user        = "52pi-k3s-${count.index + 1}"
-    private_key = file("/../.ssh/52pi-k3s-${count.index + 1}")
-    host        = "52pi-k3s-${count.index + 1}"
+    user        = self.triggers.user
+    host        = self.triggers.host
+    private_key = file(self.triggers.key)
   }
 
   provisioner "remote-exec" {
     inline = [
-      "echo 'Running on 52pi-k3s-${count.index + 1}'",
+      "echo 'Running on ${self.triggers.host}'",
 
       "sudo apt-get upgrade -y",
       "sudo apt-get update -y",
@@ -67,6 +76,16 @@ resource "null_resource" "initialize" {
   provisioner "remote-exec" {
     inline = [
       "uptime",
+      "sudo mkdir -p /tmp/.server",
+      "sudo chmod 777 /tmp/.server",
+      "echo 'Node ${self.triggers.host} initialized'"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    when = destroy
+    inline = [
+      "sudo rm -rf /tmp/.server",
     ]
   }
 }

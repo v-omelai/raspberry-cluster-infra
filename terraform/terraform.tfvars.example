@@ -1,1 +1,14 @@
-instances = Number of instances
+sleep = The number of seconds to wait for reboot
+
+nodes = {
+  server = {
+    user = "SSH username for accessing the server node"
+    host = "Hostname or IP address of the server node"
+    key  = "Path to the private SSH key"
+  }
+  agents = [{
+    user = "SSH username for accessing the agent node"
+    host = "Hostname or IP address of the agent node"
+    key  = "Path to the private SSH key"
+  }]
+}

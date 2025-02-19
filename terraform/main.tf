@@ -1,18 +1,17 @@
 module "initialize" {
-  source    = "./modules/initialize"
-  instances = var.instances
-  sleep     = 60
+  source = "./modules/initialize"
+  nodes  = concat([var.nodes.server], var.nodes.agents)
+  sleep  = var.sleep
 }
 
-module "server" {
+module "k3s-server" {
   depends_on = [module.initialize]
-  source     = "./modules/server"
-  sleep      = 30
+  source     = "./modules/k3s-server"
+  server     = var.nodes.server
 }
 
-module "agent" {
-  depends_on = [module.initialize, module.server]
-  source     = "./modules/agent"
-  instances  = var.instances
-  sleep      = 5
+module "k3s-agent" {
+  depends_on = [module.initialize, module.k3s-server]
+  source     = "./modules/k3s-agent"
+  agents     = var.nodes.agents
 }
