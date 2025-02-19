@@ -24,7 +24,7 @@ resource "null_resource" "k3s-agent" {
   }
 
   provisioner "local-exec" {
-    command = "scp -i ${self.triggers.key} -r ../.server ${self.triggers.user}@${self.triggers.host}:/tmp/.server"
+    command = "scp -i ${self.triggers.key} -r ../.server ${self.triggers.user}@${self.triggers.host}:/tmp"
   }
 
   provisioner "remote-exec" {
