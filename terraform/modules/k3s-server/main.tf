@@ -24,11 +24,9 @@ resource "null_resource" "k3s-server" {
   provisioner "remote-exec" {
     inline = [
       "echo 'Running on ${self.triggers.host}'",
-      "sudo mkdir -p /tmp/.server",
-      "sudo chmod 777 /tmp/.server",
+      "sudo ip -4 route get 1.1.1.1 | grep -oP 'src \\K\\S+' > /tmp/.server/address",
       "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=644 sh -",
       "sudo cat /var/lib/rancher/k3s/server/node-token > /tmp/.server/node-token",
-      "sudo ip -4 route get 1.1.1.1 | grep -oP 'src \\K\\S+' > /tmp/.server/address",
       "grep -qxF 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' ~/.bashrc || echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> ~/.bashrc",
       "source ~/.bashrc",
       "echo 'K3s server is now ready'",

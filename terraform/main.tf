@@ -15,3 +15,9 @@ module "k3s-agent" {
   source     = "./modules/k3s-agent"
   agents     = var.nodes.agents
 }
+
+module "helm" {
+  depends_on = [module.initialize, module.k3s-server]
+  source     = "./modules/helm"
+  server     = var.nodes.server
+}

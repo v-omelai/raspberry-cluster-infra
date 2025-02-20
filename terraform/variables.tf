@@ -1,5 +1,6 @@
 variable "sleep" {
-  type = number
+  type    = number
+  default = 60
 }
 
 variable "nodes" {
