@@ -1,4 +1,8 @@
-sleep = The number of seconds to wait for reboot
+sleep = {
+  initialize = The number of seconds to wait for the reboot
+  server     = The number of seconds to wait for the server node
+  agents     = The number of seconds to wait for the agent nodes
+}
 
 nodes = {
   server = {

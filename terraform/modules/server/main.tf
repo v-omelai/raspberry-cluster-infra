@@ -1,3 +1,7 @@
+variable "sleep" {
+  type = number
+}
+
 variable "server" {
   type = object({
     user = string
@@ -6,12 +10,13 @@ variable "server" {
   })
 }
 
-resource "null_resource" "k3s-server" {
+resource "null_resource" "server" {
   triggers = {
-    user = var.server.user
-    host = var.server.host
-    key  = var.server.key
-    run  = timestamp()
+    sleep = var.sleep
+    user  = var.server.user
+    host  = var.server.host
+    key   = var.server.key
+    run   = timestamp()
   }
 
   connection {
@@ -26,6 +31,7 @@ resource "null_resource" "k3s-server" {
       "echo 'Running on ${self.triggers.host}'",
       "sudo ip -4 route get 1.1.1.1 | grep -oP 'src \\K\\S+' > /tmp/.server/address",
       "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=644 sh -",
+      "sleep ${self.triggers.sleep}",
       "sudo cat /var/lib/rancher/k3s/server/node-token > /tmp/.server/node-token",
       "grep -qxF 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' ~/.bashrc || echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> ~/.bashrc",
       "source ~/.bashrc",

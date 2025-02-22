@@ -1,6 +1,14 @@
 variable "sleep" {
-  type    = number
-  default = 60
+  type = object({
+    initialize = number
+    server     = number
+    agents     = number
+  })
+  default = {
+    initialize = 60
+    server     = 30
+    agents     = 5
+  }
 }
 
 variable "nodes" {

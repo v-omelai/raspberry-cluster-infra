@@ -1,3 +1,7 @@
+variable "sleep" {
+  type = number
+}
+
 variable "nodes" {
   type = list(object({
     user = string
@@ -6,18 +10,15 @@ variable "nodes" {
   }))
 }
 
-variable "sleep" {
-  type = number
-}
-
 resource "null_resource" "initialize" {
   for_each = { for idx, node in var.nodes : idx => node }
 
   triggers = {
-    user = each.value.user
-    host = each.value.host
-    key  = each.value.key
-    run  = timestamp()
+    sleep = var.sleep
+    user  = each.value.user
+    host  = each.value.host
+    key   = each.value.key
+    run   = timestamp()
   }
 
   connection {
@@ -70,7 +71,7 @@ resource "null_resource" "initialize" {
   }
 
   provisioner "local-exec" {
-    command = "PowerShell -Command Start-Sleep ${var.sleep}"
+    command = "PowerShell -Command Start-Sleep ${self.triggers.sleep}"
   }
 
   provisioner "local-exec" {

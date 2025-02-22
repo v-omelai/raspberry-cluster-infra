@@ -1,3 +1,7 @@
+variable "sleep" {
+  type = number
+}
+
 variable "agents" {
   type = list(object({
     user = string
@@ -6,14 +10,15 @@ variable "agents" {
   }))
 }
 
-resource "null_resource" "k3s-agent" {
+resource "null_resource" "agents" {
   for_each = { for idx, agent in var.agents : idx => agent }
 
   triggers = {
-    user = each.value.user
-    host = each.value.host
-    key  = each.value.key
-    run  = timestamp()
+    sleep = var.sleep
+    user  = each.value.user
+    host  = each.value.host
+    key   = each.value.key
+    run   = timestamp()
   }
 
   connection {
@@ -31,6 +36,7 @@ resource "null_resource" "k3s-agent" {
     inline = [
       "echo 'Running on ${self.triggers.host}'",
       "curl -sfL https://get.k3s.io | K3S_URL=https://$(cat /tmp/.server/address):6443 K3S_TOKEN=$(cat /tmp/.server/node-token) sh -",
+      "sleep ${self.triggers.sleep}",
       "echo 'Node ${self.triggers.host} is now registered'",
     ]
   }
