@@ -1,15 +1,3 @@
-variable "sleep" {
-  type = number
-}
-
-variable "nodes" {
-  type = list(object({
-    user = string
-    host = string
-    key  = string
-  }))
-}
-
 resource "null_resource" "initialize" {
   for_each = { for idx, node in var.nodes : idx => node }
 

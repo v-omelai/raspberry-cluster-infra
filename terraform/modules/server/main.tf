@@ -1,15 +1,3 @@
-variable "sleep" {
-  type = number
-}
-
-variable "server" {
-  type = object({
-    user = string
-    host = string
-    key  = string
-  })
-}
-
 resource "null_resource" "server" {
   triggers = {
     sleep = var.sleep

@@ -1,15 +1,3 @@
-variable "sleep" {
-  type = number
-}
-
-variable "agents" {
-  type = list(object({
-    user = string
-    host = string
-    key  = string
-  }))
-}
-
 resource "null_resource" "agents" {
   for_each = { for idx, agent in var.agents : idx => agent }
 
