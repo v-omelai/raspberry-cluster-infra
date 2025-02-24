@@ -18,8 +18,7 @@ module "agents" {
   agents     = var.nodes.agents
 }
 
-module "helm" {
+module "dashboard" {
   depends_on = [module.initialize, module.server]
-  source     = "./modules/helm"
-  server     = var.nodes.server
+  source     = "./modules/dashboard"
 }
