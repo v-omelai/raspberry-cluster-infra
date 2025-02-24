@@ -15,6 +15,7 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 ### Server
 
 - `type .server\address`
+- `type .server\config`
 - `type .server\node-token`
 
 ### Terraform
