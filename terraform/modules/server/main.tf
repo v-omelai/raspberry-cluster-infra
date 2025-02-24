@@ -18,7 +18,7 @@ resource "null_resource" "server" {
     inline = [
       "echo 'Running on ${self.triggers.host}'",
       "sudo ip -4 route get 1.1.1.1 | grep -oP 'src \\K\\S+' > /tmp/.server/address",
-      "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=644 sh -",
+      "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=644 sh -s - --bind-address $(cat /tmp/.server/address)",
       "sleep ${self.triggers.sleep}",
       "sudo cat /var/lib/rancher/k3s/server/node-token > /tmp/.server/node-token",
       "sudo cat /etc/rancher/k3s/k3s.yaml > /tmp/.server/config",
