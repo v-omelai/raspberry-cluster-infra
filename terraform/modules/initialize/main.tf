@@ -62,17 +62,11 @@ resource "null_resource" "initialize" {
     command = "PowerShell -Command Start-Sleep ${self.triggers.sleep}"
   }
 
-  provisioner "local-exec" {
-    command = "scp -i ${self.triggers.key} -r ../manifests ${self.triggers.user}@${self.triggers.host}:~"
-  }
-
   provisioner "remote-exec" {
     inline = [
       "uptime",
       "sudo mkdir -p /tmp/.server",
-      "sudo mkdir -p ~/manifests",
       "sudo chmod 777 /tmp/.server",
-      "sudo chmod 777 ~/manifests",
       "echo 'Node ${self.triggers.host} initialized'"
     ]
   }
@@ -81,7 +75,6 @@ resource "null_resource" "initialize" {
     when = destroy
     inline = [
       "sudo rm -rf /tmp/.server",
-      "sudo rm -rf ~/manifests",
     ]
   }
 }
