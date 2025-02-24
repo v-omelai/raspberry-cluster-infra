@@ -18,6 +18,16 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - `type .server\config`
 - `type .server\node-token`
 
+### Chocolatey
+
+- `choco install kubernetes-cli`
+- `choco install kubernetes-helm`
+
+### Helm
+
+- `helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/`
+- `helm repo update`
+
 ### Terraform
 
 - `terraform fmt -recursive`
