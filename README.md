@@ -2,6 +2,8 @@
 
 This repository is a submodule for the **RaspberryOnCloud** project.
 
+![Overview](overview.png)
+
 ## Commands
 
 > [!NOTE]  
