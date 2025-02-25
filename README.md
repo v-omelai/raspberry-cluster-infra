@@ -22,11 +22,7 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - Magnetic Cable Clips
 - Silicone HDD Case
 
-
 ## Software
-
-> [!NOTE]  
-> The `local-exec` provisioner commands are intended to run on Windows.
 
 ### SSH
 
@@ -39,6 +35,14 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - `type .server\config`
 - `type .server\node-token`
 
+### CMD
+
+- `set KUBECONFIG=%CD%\.server\config`
+
+### PowerShell
+
+- `$env:KUBECONFIG="$PWD\.server\config"`
+
 ### Chocolatey
 
 - `choco install kubernetes-cli`
@@ -50,6 +54,9 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - `helm repo update`
 
 ### Terraform
+
+> [!NOTE]  
+> The `local-exec` provisioner commands are intended to run on Windows.
 
 - `terraform fmt -recursive`
 - `terraform -chdir=terraform init`
