@@ -24,29 +24,11 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 
 ## Software
 
-### SSH
-
-- `ssh-keygen -t rsa -f .ssh/52pi-k3s-1`
-- `ssh -i .ssh/52pi-k3s-1 52pi-k3s-1@52pi-k3s-1`
-
-### Type
-
-- `type .server\address`
-- `type .server\config`
-- `type .server\node-token`
-
-### CMD
-
-- `set KUBECONFIG=%CD%\.server\config`
-
-### PowerShell
-
-- `$env:KUBECONFIG="$PWD\.server\config"`
-
-### Chocolatey
+### Choco
 
 - `choco install kubernetes-cli`
 - `choco install kubernetes-helm`
+- `choco install terraform`
 
 ### Helm
 
@@ -63,3 +45,18 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 - `terraform -chdir=terraform plan`
 - `terraform -chdir=terraform apply`
 - `terraform -chdir=terraform destroy`
+
+### SSH
+
+- `ssh-keygen -t rsa -f .ssh/52pi-k3s-1`
+- `ssh -i .ssh/52pi-k3s-1 52pi-k3s-1@52pi-k3s-1`
+
+### Type
+
+- `type .server\address`
+- `type .server\config`
+- `type .server\node-token`
+
+### Dashboard
+
+- `powershell.exe -ExecutionPolicy Bypass -File .\dashboard.ps1`
