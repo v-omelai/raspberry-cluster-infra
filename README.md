@@ -32,7 +32,8 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 
 ### Helm
 
-- `helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/`
+- `helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard`
+- `helm repo add longhorn https://charts.longhorn.io`
 - `helm repo update`
 
 ### Terraform
@@ -60,3 +61,8 @@ This repository is a submodule for the **RaspberryOnCloud** project.
 ### Dashboard
 
 - `powershell.exe -ExecutionPolicy Bypass -File .\dashboard.ps1`
+
+### Longhorn
+
+- `powershell.exe -ExecutionPolicy Bypass -File .\longhorn.ps1`
+

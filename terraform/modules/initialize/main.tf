@@ -22,8 +22,9 @@ resource "null_resource" "initialize" {
 
       "sudo apt-get upgrade -y",
       "sudo apt-get update -y",
-      "sudo apt-get autoremove -y",
-      "sudo apt-get autoclean -y",
+
+      "sudo apt-get install -y open-iscsi",
+      "sudo systemctl enable --now iscsid",
 
       "if grep -q 'cgroup_enable=cpuset' /boot/firmware/cmdline.txt; then",
       "  echo 'cgroup_enable=cpuset found in /boot/firmware/cmdline.txt'",
@@ -75,6 +76,9 @@ resource "null_resource" "initialize" {
     when = destroy
     inline = [
       "sudo rm -rf /tmp/.server",
+      "sudo apt-get remove -y open-iscsi",
+      "sudo apt-get autoremove -y",
+      "sudo apt-get autoclean -y",
     ]
   }
 }

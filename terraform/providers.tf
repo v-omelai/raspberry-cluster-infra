@@ -1,5 +1,5 @@
 resource "null_resource" "wrapper" {
-  depends_on = [module.initialize, module.server]
+  depends_on = [module.initialize, module.server, module.agents]
   triggers = {
     config = "../.server/config"
   }

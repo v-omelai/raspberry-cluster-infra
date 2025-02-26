@@ -19,6 +19,11 @@ module "agents" {
 }
 
 module "dashboard" {
-  depends_on = [module.initialize, module.server]
+  depends_on = [module.initialize, module.server, module.agents]
   source     = "./modules/dashboard"
+}
+
+module "longhorn" {
+  depends_on = [module.initialize, module.server, module.agents]
+  source     = "./modules/longhorn"
 }
