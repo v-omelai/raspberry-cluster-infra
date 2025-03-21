@@ -1,6 +1,6 @@
 ## Overview
 
-This repository is a submodule for the **RaspberryOnCloud** project.
+This repository offers a collection of resources for building and deploying applications on a distributed computing cluster.
 
 ![Overview](overview.png)
 
