@@ -60,9 +60,8 @@ This repository offers a collection of resources for building and deploying appl
 
 ### Dashboard
 
-- `powershell.exe -ExecutionPolicy Bypass -File .\dashboard.ps1`
+- `powershell -ExecutionPolicy Bypass -File .\dashboard.ps1`
 
 ### Longhorn
 
-- `powershell.exe -ExecutionPolicy Bypass -File .\longhorn.ps1`
-
+- `powershell -ExecutionPolicy Bypass -File .\longhorn.ps1`
