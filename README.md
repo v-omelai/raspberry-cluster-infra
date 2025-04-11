@@ -6,6 +6,8 @@ This repository offers a collection of resources for building and deploying appl
 
 ## Hardware
 
+![Hardware](hardware.png)
+
 ### Main configuration
 
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5)
