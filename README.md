@@ -2,11 +2,11 @@
 
 This repository offers a collection of resources for building and deploying applications on a distributed computing cluster.
 
-![Overview](overview.png)
+![Overview](images/overview.png)
 
 ## Hardware
 
-![Hardware](hardware.png)
+![Hardware](images/hardware.png)
 
 ### Main configuration
 
@@ -62,8 +62,10 @@ This repository offers a collection of resources for building and deploying appl
 
 ### Dashboard
 
+- `cd scripts`
 - `powershell -ExecutionPolicy Bypass -File .\dashboard.ps1`
 
 ### Longhorn
 
+- `cd scripts`
 - `powershell -ExecutionPolicy Bypass -File .\longhorn.ps1`

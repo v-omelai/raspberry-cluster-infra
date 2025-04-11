@@ -1,3 +1,4 @@
+cd ..
 $env:KUBECONFIG="$PWD\.server\config"
 $base64Token = kubectl -n kubernetes-dashboard get secret admin-user-token -o jsonpath="{.data.token}"
 $decodedToken = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($base64Token))
