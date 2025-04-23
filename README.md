@@ -11,6 +11,7 @@ This repository offers a collection of resources for building and deploying appl
 ### Main configuration
 
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5)
+- [Waveshare 2.13" E-Ink Display HAT](https://www.waveshare.com/2.13inch-e-paper-hat.htm)
 - [SanDisk Ultra UHS-I microSD](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-ultra-uhs-i-microsd-120-mbps)
 - [Toshiba Canvio Basics HDD](https://storage.toshiba.com/consumer-hdd/external/canvio-basics)
 - [52pi Rack Tower Ultimate](https://wiki.52pi.com/index.php?title=ZP-0108)
