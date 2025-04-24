@@ -6,7 +6,9 @@ This repository offers a collection of resources for building and deploying appl
 
 ## Hardware
 
-![Hardware](images/hardware.png)
+![Display](images/display.png)
+
+![Cluster](images/cluster.png)
 
 ### Main configuration
 
